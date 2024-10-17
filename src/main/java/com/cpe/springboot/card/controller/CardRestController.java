@@ -52,6 +52,9 @@ public class CardRestController {
 	
 	@RequestMapping(method=RequestMethod.POST,value="/card")
 	public CardDTO addCard(@RequestBody CardDTO card) {
+		// write card into ESB for card generation
+
+
 		return cardModelService.addCard(DTOMapper.fromCardDtoToCardModel(card));
 	}
 	
