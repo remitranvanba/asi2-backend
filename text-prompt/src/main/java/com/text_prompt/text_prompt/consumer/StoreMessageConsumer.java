@@ -14,6 +14,6 @@ public class StoreMessageConsumer {
      */
     @JmsListener(destination = "${activemq.destination}", containerFactory = "jmsFactory")
     public void processToDo(Store store) {
-        log.info("Consumer> {}", store);
+        log.info("Consumer> {}", store.getItemName());
     }
 }
