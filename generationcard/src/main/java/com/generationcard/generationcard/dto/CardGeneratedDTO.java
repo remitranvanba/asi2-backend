@@ -1,24 +1,20 @@
-package com.generationcard.generationcard.entity;
+package com.generationcard.generationcard.dto;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
 @Getter @Setter
-public class CardGenerated {
-    @Id
-    @GeneratedValue
+public class CardGeneratedDTO {
     private int id;
     private String name;
     private String description;
     private String imgUrl;
 
-    public CardGenerated() {
+    public CardGeneratedDTO() {
     }
-    public CardGenerated(int id, String name, String description, String imgUrl) {
+    public CardGeneratedDTO(int id, String name, String description, String imgUrl) {
         this.id = id;
         this.name = name;
         this.description = description;

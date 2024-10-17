@@ -8,14 +8,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CardGenerationService {
-    @Autowired
-    private final CardGeneratedRepo cardGeneratedRepo;
 
-    public CardGenerationService(CardGeneratedRepo cardGeneratedRepo) {
-        this.cardGeneratedRepo = cardGeneratedRepo;
-    }
 
-    public CardGenerated createCard(CardGenerated card){
-        return new CardGenerated(1, "oum", "test", "url");
-    }
 }
