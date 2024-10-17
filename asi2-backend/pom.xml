@@ -72,6 +72,11 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.cpe.springboot</groupId>
+			<artifactId>common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
 	</dependencies>
 

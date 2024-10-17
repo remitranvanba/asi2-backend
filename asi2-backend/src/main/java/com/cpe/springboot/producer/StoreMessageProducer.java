@@ -1,6 +1,6 @@
 package com.cpe.springboot.producer;
 
-import com.cpe.springboot.producer.model.Store;
+import com.shared.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;

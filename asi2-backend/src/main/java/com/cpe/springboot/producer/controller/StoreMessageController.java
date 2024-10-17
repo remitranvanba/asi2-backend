@@ -1,7 +1,8 @@
 package com.cpe.springboot.producer.controller;
 
 import com.cpe.springboot.producer.StoreMessageProducer;
-import com.cpe.springboot.producer.model.Store;
+
+import com.shared.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
