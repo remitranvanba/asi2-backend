@@ -1,6 +1,6 @@
 package com.cpe.springboot.producer;
 
-import com.shared.Store;
+import com.shared.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
@@ -19,10 +19,10 @@ public class StoreMessageProducer {
      * Convert and publish the message to the queue
      *
      * @param destination
-     * @param store
+     * @param transaction
      */
-    public void sendTo(String destination, Store store) {
-        jmsTemplate.convertAndSend(destination, store);
+    public void sendTo(String destination, Transaction transaction) {
+        jmsTemplate.convertAndSend(destination, transaction);
         log.info("Producer> Message Sent");
     }
 

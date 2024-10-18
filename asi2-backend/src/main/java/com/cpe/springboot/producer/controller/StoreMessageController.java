@@ -2,7 +2,7 @@ package com.cpe.springboot.producer.controller;
 
 import com.cpe.springboot.producer.StoreMessageProducer;
 
-import com.shared.Store;
+import com.shared.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
@@ -26,12 +26,12 @@ public class StoreMessageController {
 
     /**
      * API for publish message for ActiveMQ queue
-     * @param store
+     * @param transaction
      * @return String
      */
     @PostMapping("/publish")
-    public String publishMessage(@RequestBody Store store){
-        storeMessageProducer.sendTo(destination, store);
+    public String publishMessage(@RequestBody Transaction transaction){
+        storeMessageProducer.sendTo(destination, transaction);
         return "Success";
     }
 

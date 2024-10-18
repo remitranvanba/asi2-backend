@@ -1,9 +1,10 @@
-package com.cpe.springboot.card.controller;
+package com.cpe.springboot.card.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.cpe.springboot.card.repository.CardRefRepository;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;

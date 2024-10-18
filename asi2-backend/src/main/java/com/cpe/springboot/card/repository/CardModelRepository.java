@@ -1,4 +1,4 @@
-package com.cpe.springboot.card.controller;
+package com.cpe.springboot.card.repository;
 
 import com.cpe.springboot.user.model.UserModel;
 import org.springframework.data.repository.CrudRepository;
@@ -9,4 +9,5 @@ import java.util.List;
 
 public interface CardModelRepository extends CrudRepository<CardModel, Integer> {
     List<CardModel> findByUser(UserModel u);
+
 }

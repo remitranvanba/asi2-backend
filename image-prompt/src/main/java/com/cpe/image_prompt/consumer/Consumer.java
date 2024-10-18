@@ -1,4 +1,4 @@
-package com.text_prompt.text_prompt.consumer;
+package com.cpe.image_prompt.consumer;
 
 import com.shared.Transaction;
 import lombok.extern.slf4j.Slf4j;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class StoreMessageConsumer {
+public class Consumer {
     /**
      * Message Listener of ActiveMQ queue
      * @param transaction

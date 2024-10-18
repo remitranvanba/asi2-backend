@@ -13,6 +13,7 @@
         <module>common-model</module>
         <module>asi2-backend</module>
         <module>text-prompt</module>
+        <module>image-prompt</module>
     </modules>
 
 
