@@ -8,11 +8,11 @@ public class Transaction implements Serializable {
 
     private int id;
     private String text;
-    private int description;
+    private String description;
 
     public Transaction() {};
 
-    public Transaction(int id, String text, int description) {
+    public Transaction(int id, String text, String description) {
         this.id = id;
         this.text = text;
         this.description = description;
@@ -26,7 +26,7 @@ public class Transaction implements Serializable {
         return this.text;
     }
 
-    public int getDescription() {
+    public String getDescription() {
         return this.description;
     }
 
@@ -37,7 +37,7 @@ public class Transaction implements Serializable {
     public void setText(String text) {
         this.text = text;
     }
-    public void setDescription(int description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 

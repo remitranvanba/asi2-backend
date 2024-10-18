@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/publish")
 public class StoreMessageController {
 
     @Autowired
@@ -29,9 +29,17 @@ public class StoreMessageController {
      * @param transaction
      * @return String
      */
-    @PostMapping("/publish")
-    public String publishMessage(@RequestBody Transaction transaction){
-        storeMessageProducer.sendTo(destination, transaction);
+    @PostMapping("/text")
+    public String publishTextMessage(@RequestBody Transaction transaction){
+
+        storeMessageProducer.sendTo("text", transaction);
+        return "Success";
+    }
+
+    @PostMapping("/image")
+    public String publishImageMessage(@RequestBody Transaction transaction){
+
+        storeMessageProducer.sendTo("image", transaction);
         return "Success";
     }
 
