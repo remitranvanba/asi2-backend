@@ -7,9 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="text-prompt" />
-        <module name="asi2-backendmarket-monolithic-student" />
         <module name="CommonModel-3.bis" />
+        <module name="text-prompt" />
+        <module name="common" />
+        <module name="asi2-backendmarket-monolithic-student" />
       </profile>
     </annotationProcessing>
   </component>
