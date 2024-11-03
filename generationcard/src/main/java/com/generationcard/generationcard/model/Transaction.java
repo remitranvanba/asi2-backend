@@ -1,8 +1,15 @@
 package com.generationcard.generationcard.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import java.io.Serial;
 import java.io.Serializable;
 
+@Setter
+@Getter
 public class Transaction implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1069270118228032176L;
 
     private int id;
@@ -14,29 +21,6 @@ public class Transaction implements Serializable {
     public Transaction(int id, String text, String description) {
         this.id = id;
         this.text = text;
-        this.description = description;
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public String getText() {
-        return this.text;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-    public void setDescription(String description) {
         this.description = description;
     }
 

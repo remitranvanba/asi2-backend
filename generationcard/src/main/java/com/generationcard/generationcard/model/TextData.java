@@ -1,5 +1,10 @@
 package com.generationcard.generationcard.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class TextData {
     private String text;
 
@@ -7,11 +12,4 @@ public class TextData {
         this.text = text;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
 }
