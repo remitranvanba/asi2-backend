@@ -15,9 +15,9 @@ public class TransactionMessageProducer {
     private JmsTemplate jmsTemplate;
 
 
-    public void sendMessage(@RequestBody Transaction transaction) {
+    public void sendMessage(Transaction transaction, String destination) {
 
-        jmsTemplate.convertAndSend("text.queue", transaction);  // Queue for TextPrompt
-        jmsTemplate.convertAndSend("image.queue", transaction);  // Queue for ImagePrompt
+        jmsTemplate.convertAndSend(destination, transaction);  // Queue for TextPrompt
+        // jmsTemplate.convertAndSend("image.queue", transaction);  // Queue for ImagePrompt
     }
 }

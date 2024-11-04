@@ -39,7 +39,7 @@ public class JmsConfiguration {
     public MessageConverter jacksonJmsMessageConverter() {
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
         converter.setTargetType(MessageType.TEXT);
-        converter.setTypeIdPropertyName("_type");
+        converter.setTypeIdPropertyName("_asb_");
         return converter;
     }
 

@@ -17,11 +17,20 @@ public class Consumer {
      */
     @JmsListener(destination = "${activemq.destination}", containerFactory = "jmsFactory")
     public void processToDo(Transaction transaction) {
-        log.info("Consumer> {}", transaction.getText());
-        String uri = "http://localhost:8080/prompt/req";
+        log.info("Consumer> {}", transaction.getPrompt());
+        String uri = "http://localhost:8086/prompt/req";
         RestTemplate restTemplate = new RestTemplate();
-        ImageRequest imageRequest = new ImageRequest(transaction.getText(), "");
+        ImageRequest imageRequest = new ImageRequest(transaction.getPrompt(), "");
         ImageResponse result = restTemplate.postForObject(uri, imageRequest, ImageResponse.class);
         log.info("ImageResponse: {}", result.getUrl());
+
+        // post api call to indicate we finished the IMG on ms card-generation
+        transaction.setImg(result.getUrl());
+
+        String uriResponse = "http://localhost:8087/cardgeneration/receive-image";
+        RestTemplate restCardGeneration = new RestTemplate();
+
+        Transaction resultCardGeneration = restCardGeneration.postForObject(uriResponse, transaction, Transaction.class);
+        log.info(resultCardGeneration.getImg());
     }
 }

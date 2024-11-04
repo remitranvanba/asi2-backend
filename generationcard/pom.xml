@@ -79,11 +79,6 @@
 			<artifactId>common</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-		<dependency>
-			<groupId>com.cpe.springboot</groupId>
-			<artifactId>shared-model</artifactId>
-			<version>1</version>
-		</dependency>
 
 
 	</dependencies>

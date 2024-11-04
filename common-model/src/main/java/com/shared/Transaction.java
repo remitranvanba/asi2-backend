@@ -1,24 +1,55 @@
 package com.shared;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public class Transaction implements Serializable {
 
     private static final long serialVersionUID = 1069270118228032176L;
 
-    private int id;
+    // transfer field
+    private long id;
+    private String prompt;
+    // property field
     private String text;
     private String description;
+    private String img;
+
+
+
+    public Transaction(long id, String text, String description, String img) {
+        this.id = id;
+
+        this.text = text;
+        this.description = description;
+        this.img = img;
+    }
 
     public Transaction() {};
 
-    public Transaction(int id, String text, String description) {
+    public Transaction(long id, String text, String description) {
         this.id = id;
         this.text = text;
         this.description = description;
     }
 
-    public int getId() {
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getPrompt() {
+        return prompt;
+    }
+
+    public void setPrompt(String prompt) {
+        this.prompt = prompt;
+    }
+
+    public long getId() {
         return this.id;
     }
 
@@ -30,7 +61,7 @@ public class Transaction implements Serializable {
         return this.description;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

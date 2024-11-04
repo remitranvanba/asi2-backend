@@ -5,13 +5,19 @@ import java.util.List;
 import java.util.Optional;
 
 import com.cpe.springboot.card.service.CardModelService;
+import com.shared.CardGenerationPrompt;
+import com.shared.CardGenerationResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.cpe.springboot.card.model.CardDTO;
@@ -24,6 +30,7 @@ import com.cpe.springboot.common.tools.DTOMapper;
 
 public class CardRestController {
 
+	private static final Logger log = LoggerFactory.getLogger(CardRestController.class);
 	private final CardModelService cardModelService;
 	
 	public CardRestController(CardModelService cardModelService) {
@@ -52,11 +59,17 @@ public class CardRestController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST,value="/card")
-	public CardDTO addCard(@RequestBody CardDTO card) {
-		// write card into ESB for card generation
+	public ResponseEntity<CardGenerationResponse> addCard(@RequestBody CardGenerationPrompt card) {
 
+		// api calls to generationcard =>
+		String uri = "http://localhost:8087/cardgeneration/generate-card";
+		RestTemplate restTemplate = new RestTemplate();
+		CardGenerationPrompt cardGenerationPrompt = new CardGenerationPrompt(card.getUserId(), card.getPrompt());
 
-		return cardModelService.addCard(DTOMapper.fromCardDtoToCardModel(card));
+		CardGenerationResponse result = restTemplate.postForObject(uri, cardGenerationPrompt, CardGenerationResponse.class);
+		// call went well
+		log.info(result != null ? result.transactionId : null);
+		return ResponseEntity.ok(result);
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT,value="/card/{id}")

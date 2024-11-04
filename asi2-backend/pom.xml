@@ -68,11 +68,6 @@
 			<version>2.0.2</version>
 		</dependency>
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>com.cpe.springboot</groupId>
 			<artifactId>common</artifactId>
 			<version>1.0.0</version>
