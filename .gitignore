@@ -3,3 +3,4 @@ image-prompt/target
 common-model/target
 .idea
 .env
+generationcard/target

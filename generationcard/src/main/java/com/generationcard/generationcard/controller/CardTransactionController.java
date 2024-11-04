@@ -36,15 +36,25 @@ public class CardTransactionController {
     private TransactionMessageProducer transactionMessageProducer;
 
     // Call de retour des ms
-    @PostMapping("/receive-text")
-    public ResponseEntity<String> receiveTextData(@RequestBody TextData textData) {
-        cardTransactionService.saveTextData(textData);
-        return ResponseEntity.ok("Text data received successfully");
+    @PostMapping("/receive-title")
+    public ResponseEntity<TransactionEntity> receiveTitle(@RequestBody Transaction transaction) {
+        return ResponseEntity.ok(transactionService.updateTitle(transaction));
     }
+    @PostMapping("/receive-description")
+    public ResponseEntity<TransactionEntity> receiveDescription(@RequestBody Transaction transaction) {
+        TransactionEntity transactionEntity = transactionService.updateDescription(transaction);
+        if (!transactionEntity.getTitle().isEmpty() &&
+                !transactionEntity.getDescription().isEmpty() &&
+                !transactionEntity.getImg().isEmpty()) {
+            transactionService.sendToMonolith(transactionEntity);
+        }
+        return ResponseEntity.ok(transactionEntity);
+    }
+
     // Call de retour des ms
     @PostMapping("/receive-image")
-    public ResponseEntity<TransactionEntity> receiveImageData(@RequestBody Transaction transaction) {
-        return ResponseEntity.ok(transactionService.updateTransaction(transaction));
+    public ResponseEntity<TransactionEntity> receiveImage(@RequestBody Transaction transaction) {
+        return ResponseEntity.ok(transactionService.updateImage(transaction));
     }
     // call d'entrée depuis le monolith
     @PostMapping("/generate-card")

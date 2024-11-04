@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public interface TransactionEntityRepository extends JpaRepository<TransactionEntity, Integer> {
     public Optional<TransactionEntity> findById(long id);
+    public Optional<TransactionEntity> getById(long id);
 }

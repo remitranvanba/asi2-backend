@@ -18,14 +18,7 @@ public class CardTransactionService {
     @Autowired
     private MonolithClient monolithClient;
 
-    public void saveTextData(TextData text) {
-        this.textData = text;
-        checkAndSendToMonolith();
-    }
-    public void saveImageData(ImageData image) {
-        this.imageData = image;
-        checkAndSendToMonolith();
-    }
+
 
     private void checkAndSendToMonolith() {
         if (textData != null && imageData != null) {
