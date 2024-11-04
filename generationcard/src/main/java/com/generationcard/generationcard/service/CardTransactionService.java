@@ -4,7 +4,7 @@ import com.generationcard.generationcard.client.MonolithClient;
 import com.generationcard.generationcard.model.CardInfo;
 import com.generationcard.generationcard.model.ImageData;
 import com.generationcard.generationcard.model.TextData;
-import com.generationcard.generationcard.model.Transaction;
+import com.shared.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

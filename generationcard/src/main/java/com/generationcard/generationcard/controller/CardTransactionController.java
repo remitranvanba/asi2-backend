@@ -1,12 +1,11 @@
 package com.generationcard.generationcard.controller;
 
+import com.shared.Transaction;
 import com.generationcard.generationcard.model.ImageData;
 import com.generationcard.generationcard.model.TextData;
-import com.generationcard.generationcard.model.Transaction;
 import com.generationcard.generationcard.producer.TransactionMessageProducer;
 import com.generationcard.generationcard.service.CardTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
