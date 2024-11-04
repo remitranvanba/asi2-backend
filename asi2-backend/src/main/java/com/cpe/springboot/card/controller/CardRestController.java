@@ -68,7 +68,6 @@ public class CardRestController {
 
 		CardGenerationResponse result = restTemplate.postForObject(uri, cardGenerationPrompt, CardGenerationResponse.class);
 		// call went well
-		log.info(result != null ? result.transactionId : null);
 		return ResponseEntity.ok(result);
 	}
 	
