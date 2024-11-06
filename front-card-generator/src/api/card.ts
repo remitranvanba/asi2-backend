@@ -40,3 +40,17 @@ export const fetchUserCards = async (
   const cards = await Promise.all(cardFetchPromises); // parallelized calls
   return cards;
 };
+
+
+export const generateCard = async (userId: string, prompt: string) => {
+  const response = await fetch(import.meta.env.VITE_APP_API_URL + "/card", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ userId, prompt }),
+  });
+
+  const data = await response.json();
+  return data;
+};
