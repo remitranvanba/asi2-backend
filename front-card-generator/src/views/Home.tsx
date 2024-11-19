@@ -39,6 +39,12 @@ export default function Home() {
       description: "Generate a new card from scratch.",
       to: "/generator",
     },
+    {
+      label: "Chat",
+      icon: <DrawIcon />,
+      description: "Access the chat server.",
+      to: "/chat",
+    },
   ];
 
   return (
