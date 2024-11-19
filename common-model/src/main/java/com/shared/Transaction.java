@@ -14,8 +14,16 @@ public class Transaction implements Serializable {
     private String text;
     private String description;
     private String img;
+    private Integer userId;
 
-
+    public Transaction(long id, String prompt, String text, String description, String img, Integer userId) {
+        this.id = id;
+        this.prompt = prompt;
+        this.text = text;
+        this.description = description;
+        this.img = img;
+        this.userId = userId;
+    }
 
     public Transaction(long id, String text, String description, String img) {
         this.id = id;
@@ -32,6 +40,15 @@ public class Transaction implements Serializable {
         this.text = text;
         this.description = description;
     }
+
+    public Transaction(long id, String title, String description, String img, Integer userId) {
+        this.id = id;
+        this.text = title;
+        this.description = description;
+        this.img = img;
+        this.userId = userId;
+    }
+
 
     public String getImg() {
         return img;
@@ -70,6 +87,13 @@ public class Transaction implements Serializable {
     }
     public void setDescription(String description) {
         this.description = description;
+    }
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
 }

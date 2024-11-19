@@ -43,6 +43,7 @@ public class CardTransactionController {
     @PostMapping("/receive-description")
     public ResponseEntity<TransactionEntity> receiveDescription(@RequestBody Transaction transaction) {
         TransactionEntity transactionEntity = transactionService.updateDescription(transaction);
+        assert transactionEntity != null;
         if (!transactionEntity.getTitle().isEmpty() &&
                 !transactionEntity.getDescription().isEmpty() &&
                 !transactionEntity.getImg().isEmpty()) {
@@ -60,12 +61,13 @@ public class CardTransactionController {
     @PostMapping("/generate-card")
     public ResponseEntity<CardGenerationResponse> generateCard(@RequestBody CardGenerationPrompt prompt ) {
         // Create transaction with prompt information
-        TransactionEntity transaction = transactionService.createTransactionEntity();
+        TransactionEntity transaction = transactionService.createTransactionEntity(prompt.getUserId());
         Transaction transactionShared = new Transaction(
                 transaction.getId(),
                 transaction.getTitle(),
                 transaction.getDescription(),
-                transaction.getImg());
+                transaction.getImg(),
+                transaction.getUserId());
         // titre
         log.info(Long.toString(transaction.getId())) ;
         transactionMessageProducer.sendMessage(transactionShared, "title");

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import com.cpe.springboot.card.service.CardModelService;
+import com.cpe.springboot.user.controller.UserService;
+import com.cpe.springboot.user.model.UserModel;
 import com.shared.CardGenerationPrompt;
 import com.shared.CardGenerationResponse;
 import com.shared.Transaction;
@@ -28,9 +30,11 @@ public class CardRestController {
 
 	private static final Logger log = LoggerFactory.getLogger(CardRestController.class);
 	private final CardModelService cardModelService;
+	private final UserService userService;
 	
-	public CardRestController(CardModelService cardModelService) {
+	public CardRestController(CardModelService cardModelService, UserService userService) {
 		this.cardModelService=cardModelService;
+		this.userService = userService;
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/cards")
@@ -81,5 +85,17 @@ public class CardRestController {
 	@PostMapping("/create-card")
 	public void UpdateCardInfo(@RequestBody Transaction transaction) {
 		log.info(transaction.getDescription());
+		CardModel cm = cardModelService.getRandCard(1).get(0);
+		cm.setName(transaction.getText());
+		cm.setDescription(transaction.getDescription());
+		cm.setImgUrl(transaction.getImg());
+		Optional<UserModel> userModel = userService.getUser(transaction.getUserId());
+		if (userModel.isPresent()) {
+			cm.setUser(userModel.get());
+			cardModelService.addCard(cm);
+		} else {
+			log.error("User not found");
+		}
+
 	}
 }

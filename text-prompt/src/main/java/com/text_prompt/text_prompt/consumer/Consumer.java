@@ -36,7 +36,11 @@ public class Consumer {
     public void processToDoDescription(Transaction transaction) {
         // generate card information: Description
 //      transaction.setDescription("Je suis une description aléatoire, mais pas vraiment");
-        transaction.setDescription(String.join(" ",new RestTemplate().getForObject("https://random-word-api.herokuapp.com/word?number=10", List.class)));
+        try {
+            transaction.setDescription(String.join(" ",new RestTemplate().getForObject("https://random-word-api.herokuapp.com/word?number=10", List.class)));
+        } catch (Exception e) {
+            transaction.setDescription("Je suis une description aléatoire, mais pas vraiment");
+        }
         // send call to cardGeneration to notify that everything is OK
         String uriResponse = "http://localhost:8087/cardgeneration/receive-description";
         RestTemplate restCardGeneration = new RestTemplate();

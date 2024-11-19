@@ -1,5 +1,6 @@
 package com.cpe.springboot.card.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
@@ -8,6 +9,7 @@ public class CardBasics {
 	private String description;
 	private String family;
 	private String affinity;
+	@Column(length = Integer.MAX_VALUE)
 	private String imgUrl;
 	private String smallImgUrl;
 

@@ -16,5 +16,6 @@ public class TransactionEntity {
     private String img;
     private String title;
     private String description;
+    private Integer userId;
 
 }

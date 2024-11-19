@@ -3,17 +3,17 @@ package com.shared;
 
 
 public class CardGenerationPrompt {
-    private String userId;
+    private Integer userId;
     private String prompt;
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
     public String getPrompt() {
         return prompt;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
     public void setPrompt(String prompt) {
@@ -23,7 +23,7 @@ public class CardGenerationPrompt {
     public CardGenerationPrompt() {
     }
 
-    public CardGenerationPrompt(String userId, String prompt) {
+    public CardGenerationPrompt(Integer userId, String prompt) {
         this.userId = userId;
         this.prompt = prompt;
     }

@@ -25,8 +25,9 @@ public class TransactionService {
         this.transactionEntityRepository = transactionEntityRepository;
     }
 
-    public TransactionEntity createTransactionEntity() {
+    public TransactionEntity createTransactionEntity(Integer userId) {
         TransactionEntity transaction = new TransactionEntity();
+        transaction.setUserId(userId);
         return this.transactionEntityRepository.save(transaction);
     }
     public TransactionEntity updateTransaction(Transaction transaction) {
