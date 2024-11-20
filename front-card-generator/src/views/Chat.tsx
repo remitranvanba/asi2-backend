@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectUserId } from "../store/selectors/user.selectors";
 import socketClient  from "socket.io-client";
-import { fetchUserInfoById } from "../api/user";
 import ChannelList from "../components/Chat/ChannelList";
 import { MessagesPanel } from "../components/Chat/MessagesPanel";
 
@@ -33,7 +32,9 @@ export default function Chat() {
         });
         socket.on('message', message => {
             // ajoute le message au channel correspondant
+            console.log(_channel);
             const channels = _channels;
+            
             channels.forEach(c => {
                 if (c.id === message.channel_id) {
                     if (!c.messages) {
@@ -66,7 +67,7 @@ export default function Chat() {
     }
 
     const handleSendMessage = (channel_id: any, text: any) => {
-        _socket.emit('send-message', { channel_id, text, senderName: _socket.id, id: Date.now() });
+        _socket.emit('send-message', { channel_id, text, senderName: userId, id: Date.now() });
     }
 
     if (!_channels || _channels.length <= 0) {
@@ -76,15 +77,12 @@ export default function Chat() {
     if (!_socket) {
         configureSocket();
     }
+    console.log(_channel);
     
-/*
-<ChannelList channels={_channels} onSelectChannel={handleChannelSelect} />
-            <MessagesPanel onSendMessage={handleSendMessage} channel={_channel} />
-*/
   return (
-        <div className='chat-app'>
+        <div className='chat-app' style={{ display: "flex", width: "100%", gap: "1em" }}>
             <ChannelList channels={_channels} onSelectChannel={handleChannelSelect} />
-            <MessagesPanel onSendMessage={handleSendMessage} channel={_channel} />
+            {_channel ? <MessagesPanel onSendMessage={handleSendMessage} channel={_channel} /> : null}
         </div>
     );
 }

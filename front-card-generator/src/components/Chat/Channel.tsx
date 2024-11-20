@@ -9,9 +9,9 @@ export default class Channel extends React.Component<{id: string; name: string; 
 
     render() {
         return (
-            <div className='channel-item' onClick={this.click}>
+            <div className='channel-item' onClick={this.click} style={{ backgroundColor: "lightgoldenrodyellow", borderRadius: "0.5em"}}>
                 <div>{this.props.name}</div>
-                <span>{this.props.participants}</span>
+                <span>Nombre d'utilisateurs: {this.props.participants}</span>
             </div>
         )
     }

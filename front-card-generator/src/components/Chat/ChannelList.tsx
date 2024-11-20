@@ -15,7 +15,7 @@ export default class ChannelList extends React.Component<{channels: any[], onSel
             list = this.props.channels.map(c => <Channel key={c.id} id={c.id} name={c.name} participants={c.participants} onClick={this.handleClick} />);
         }
         return (
-            <div className='channel-list'>
+            <div className='channel-list' style={{flex: 1}}>
                 {list}
             </div>);
     }
