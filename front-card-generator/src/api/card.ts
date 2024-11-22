@@ -54,3 +54,18 @@ export const generateCard = async (userId: string, prompt: string) => {
   const data = await response.json();
   return data;
 };
+
+export const fetchCardByUserId = async(userId: number) : Promise<Card[]> => {
+  const response = await fetch(import.meta.env.VITE_APP_API_URL + "/cardsByUserId/" + userId, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    }
+  });
+    const cardList = await response.json().then(data => {
+      return data;
+    }).catch(err => {
+      console.log(err)
+    });
+  return cardList;
+}

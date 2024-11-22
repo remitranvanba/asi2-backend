@@ -45,6 +45,12 @@ export default function Home() {
       description: "Access the chat server.",
       to: "/chat",
     },
+    {
+      label: "Game",
+      icon: <DrawIcon/>,
+      description: "Game",
+      to: "/game"
+    }
   ];
 
   return (

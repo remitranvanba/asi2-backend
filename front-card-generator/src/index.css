@@ -14,3 +14,46 @@ body {
     margin: 0;
     height: 100%;
 }
+
+.game-card-container {
+    background-color: #8f8f8f;
+    padding: 1em;
+    border: solid;
+  }
+  
+  .game-title-wrapper {
+    text-align: center;
+    font-weight: bolder;
+    font-size: larger;
+  }
+  
+  .game-image {
+    object-fit: contain;
+  }
+  
+  .game-stat-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 3em 0 3em;
+  }
+  
+  .game-pv-wrapper {
+    text-align: center;
+    color: green;
+  }
+
+.game-card-wrapper {
+    background-color: lightgray;
+  }
+  
+  .game-card-container-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+  
+  .selected-card {
+    background-color:green !important;
+    color: red
+  }

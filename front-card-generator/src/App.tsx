@@ -16,6 +16,7 @@ import { ToastContainer } from "react-toastify";
 import Inventory from "./views/Inventory";
 import Generator from "./views/Generator";
 import Chat from "./views/Chat";
+import Game from "./views/Game";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path="/chat" element={<Chat />} />
           </Route>
+          <Route path="/game" element={<Game />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Box>
