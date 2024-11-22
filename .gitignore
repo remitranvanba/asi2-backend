@@ -4,3 +4,4 @@ common-model/target
 .idea
 .env
 generationcard/target
+express-socket/node_modules
