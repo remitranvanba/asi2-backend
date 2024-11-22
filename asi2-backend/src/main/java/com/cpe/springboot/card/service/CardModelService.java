@@ -74,5 +74,10 @@ public class CardModelService {
 	public List<CardModel> getAllCardToSell(){
 		return this.cardRepository.findByUser(null);
 	}
+
+	public List<CardModel> getCardByUserId(Integer userId) {
+		return this.cardRepository.findAllByUserId(userId);
+	}
+
 }
 

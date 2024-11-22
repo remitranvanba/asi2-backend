@@ -10,6 +10,7 @@ import com.cpe.springboot.user.model.UserModel;
 import com.shared.CardGenerationPrompt;
 import com.shared.CardGenerationResponse;
 import com.shared.Transaction;
+import org.apache.coyote.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.cpe.springboot.card.model.CardDTO;
 import com.cpe.springboot.card.model.CardModel;
 import com.cpe.springboot.common.tools.DTOMapper;
+
 
 //ONLY FOR TEST NEED ALSO TO ALLOW CROOS ORIGIN ON WEB BROWSER SIDE
 @CrossOrigin
@@ -56,6 +58,22 @@ public class CardRestController {
 		}
 		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Card id:"+id+", not found",null);
 
+	}
+	@GetMapping(value = "/cardsByUserId/{userId}")
+	private ResponseEntity<List<CardDTO>> getCardsByUserId(@PathVariable String userId) {
+		Integer userIdAsInt;
+		try {
+			userIdAsInt = Integer.parseInt(userId);
+		} catch (Exception e) {
+			log.error("Error when parsing");
+			return ResponseEntity.badRequest().build();
+		}
+		List<CardModel> cardList = cardModelService.getCardByUserId(userIdAsInt);
+		List<CardDTO> cardListOfUser = new ArrayList<CardDTO>();
+		for (CardModel card : cardList) {
+			cardListOfUser.add(DTOMapper.fromCardModelToCardDTO(card));
+		}
+		return ResponseEntity.ok(cardListOfUser);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST,value="/card")
