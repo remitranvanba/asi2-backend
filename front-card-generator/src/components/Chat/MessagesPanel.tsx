@@ -23,13 +23,13 @@ export class MessagesPanel extends React.Component<{channel: any, onSendMessage:
         }
         return (
             <div style={{ flex: 3 }}>
-                <div className='messages-panel' style={{ display: 'flex', flexDirection: 'column' }}>
-                    <div className="messages-list" style={{ maxHeight: '60em', overflowY: 'scroll' }}>{list}</div>
+                <div className='messages-panel' style={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 128px)', justifyContent: 'space-between' }}>
+                    <div className="messages-list" style={{ overflowY: 'auto' }}>{list}</div>
                     {this.props.channel &&
                     <form onSubmit={this.send}>
                         <div className="messages-input" style={{ display: 'flex', margin: "1em" }}>
-                            <input style={{ flex: 1, borderRadius: "2em" }} type="text" onChange={this.handleInput} value={this.state.input_value} />
-                            <button type="submit" style={{ marginLeft: "1em", padding: "2em", backgroundColor: "lightblue"}}>Send</button>
+                            <input style={{ flex: 1, borderRadius: "2em", padding: "1em" }} type="text" onChange={this.handleInput} value={this.state.input_value} />
+                            <button type="submit" style={{ marginLeft: "1em", padding: "1em", backgroundColor: "lightblue"}}>Send</button>
                         </div>
                     </form>
                     }
